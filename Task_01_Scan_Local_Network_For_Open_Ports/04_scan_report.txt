@@ -1,0 +1,21 @@
+# Nmap 7.95 scan initiated Thu Apr  9 14:51:00 2026 as: nmap -sS -v -T4 10.202.66.0/24 -oN task1_report.txt
+Nmap scan report for 10.202.66.212
+Host is up (0.0084s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT     STATE SERVICE
+53/tcp   open  domain
+MAC Address: 0E:38:7F:25:47:1A (Unknown)
+
+Nmap scan report for 10.202.66.233
+Host is up (0.0052s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT     STATE    SERVICE
+5060/tcp filtered sip
+MAC Address: 84:6F:CE:9D:CE:BD (Guangdong Oppo Mobile Telecommunications)
+
+Nmap scan report for 10.202.66.18
+Host is up.
+All 1000 scanned ports on 10.202.66.18 are in ignored states.
+Not shown: 1000 filtered tcp ports (no-response)
+
+# Nmap done at Thu Apr  9 14:53:00 2026 -- 256 IP addresses (3 hosts up) scanned in 113.79 seconds
