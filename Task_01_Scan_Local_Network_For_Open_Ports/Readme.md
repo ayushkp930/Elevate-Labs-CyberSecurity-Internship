@@ -90,5 +90,6 @@ Implement strict firewall rules, disable unused services, and ensure all active 
 8. Importance of Network Reconnaissance?
 Reconnaissance is the first step of the Cyber Kill Chain. Identifying exposed services allows security professionals to proactively fix vulnerabilities before an attacker can exploit them.
 
-Internship: Elevate Labs
+Internship: Elevate Labs.
+
 Intern: Ayush Kumar Patel
