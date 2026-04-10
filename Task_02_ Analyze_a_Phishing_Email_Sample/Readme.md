@@ -35,7 +35,9 @@ I analyzed a deceptive email masquerading as a "Microsoft Security Alert."
 * **Header Analysis:** * **SPF/DKIM Failure:** The cryptographic signatures did not match the claimed sender, indicating a high probability of spoofing.
     * **Source IP:** Trace analysis shows the email originated from an IP in a region inconsistent with the user's typical login patterns.
 
-
+### **Analysis Evidence**
+![Visual Analysis](01_Email_Body_Analysis.png)
+![Header Analysis](02_Header_Analysis_Tool.png)
 
 ---
 
