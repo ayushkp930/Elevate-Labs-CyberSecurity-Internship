@@ -1,4 +1,4 @@
-# Task 02: Phishing Email Analysis & Threat Investigation
+# Task 02: Analyze_a_Phishing_Email_Sample
 
 ## 📌 Executive Summary
 In this project, I performed a deep-dive analysis of a sophisticated phishing email targeted at extracting user credentials. As a **Cyber Security Resident at Elevate Labs**, the goal was to identify "Indicators of Phishing" (IoPs), analyze email headers for spoofing, and evaluate the potential impact on organizational security.
