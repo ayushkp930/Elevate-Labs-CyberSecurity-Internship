@@ -1,95 +1,88 @@
-# Task 01: Scan Local Network For Open Ports
+# 🎯 Task 01: Network Reconnaissance & Port Scanning
 
-📌 Executive Summary
-As part of the Elevate Labs Cyber Security Residency, this project focuses on the first phase of the Cyber Attack Lifecycle: Reconnaissance. The objective was to perform a network scan on a local subnet to identify active hosts and open services using Nmap and Wireshark.
+## 📌 Executive Summary
+As part of the **Elevate Labs Cyber Security Internship**, this project focuses on the reconnaissance phase of the Cyber Kill Chain. The primary objective was to perform a non-intrusive network scan on a local subnet to map active hosts, identify open services, and analyze network traffic behavior using **Nmap** and **Wireshark**.
 
-🛠️ Technical Specifications
-Operating System: Kali Linux (GNOME Desktop Environment)
+## 🛠️ Technical Environment
+| Component | Details |
+| :--- | :--- |
+| **Operating System** | Kali Linux (GNOME) |
+| **Primary Tool** | Nmap 7.98 |
+| **Packet Analyzer** | Wireshark |
+| **Target Subnet** | `10.202.66.0/24` |
+| **Scan Type** | TCP SYN (Stealth) Scan (`-sS`) |
 
-Primary Tool: Nmap 7.98
+---
 
-Packet Analyzer: Wireshark
+## 🚀 Methodology: The Stealth Scan
+A "Half-Open" (TCP SYN) scan was utilized to minimize detection probability while maintaining high accuracy.
 
-Target Subnet: 10.202.66.0/24
+**Execution Command:**
+`sudo nmap -sS -v -T4 10.202.66.0/24 -oN task1_report.txt`
 
-Scan Methodology: TCP SYN (Stealth) Scan
+**Command Breakdown:**
+* `-sS`: **TCP SYN Stealth Scan** - Bypasses the full 3-way handshake to evade basic logging.
+* `-v`: **Verbose Mode** - Provides real-time feedback during execution.
+* `-T4`: **Aggressive Timing** - Optimizes scan speed for reliable local networks.
+* `-oN`: **Normal Output** - Exports results to a structured text file (`04_scan_report.txt`).
 
-🚀 Methodology & Execution
-The scan was executed using a "Half-Open" stealth technique to minimize detection while ensuring high accuracy.
+---
 
-Command Used:
+## 🔍 Key Findings
 
-Bash
-sudo nmap -sS -v -T4 10.202.66.0/24 -oN task1_report.txt
-Nmap Flags Breakdown:
--sS: TCP SYN Stealth scan to identify open ports without completing the 3-way handshake.
+The scan successfully mapped the subnet and identified **3 active hosts**:
 
--v: Enabled verbose mode for real-time visual feedback.
+| IP Address | Status | Port/Protocol | Service | Observation |
+| :--- | :--- | :--- | :--- | :--- |
+| **`10.202.66.212`** | UP | `53/tcp` (Open) | DNS | Active Domain Name System resolution service. |
+| **`10.202.66.233`** | UP | `5060/tcp` (Filtered) | SIP | Mobile device (Oppo). VoIP/SIP traffic is filtered. |
+| **`10.202.66.18`** | UP | All 1000 Filtered | Localhost | Scanning machine. Internal firewall is dropping external probes. |
 
--T4: Set timing to 'Aggressive' for faster execution on a reliable network.
+*(Full raw output is documented in the repository: `04_scan_report.txt`)*
 
--oN: Logged output to a structured text file for documentation.
+---
 
-🔍 Key Findings
-The scan successfully identified 3 active hosts on the network:
+## 📸 Proof of Concept (Visual Evidence)
 
-Host 10.202.66.212
+### 1. Nmap Command Execution
+*Deployment of the aggressive SYN scan against the target subnet.*
+![Nmap Command Execution](01_Nmap_Command_Execution.png)
 
-Status: Up
+### 2. Scan Results Summary
+*Successful discovery of active hosts and their respective port states.*
+![Nmap Scan Results](02_Nmap_Scan_Results.png)
 
-Open Port: 53/tcp (Service: Domain/DNS)
+### 3. Traffic Analysis via Wireshark
+*Packet-level validation of the stealth scan (observing the `SYN` ➔ `SYN/ACK` ➔ `RST` flow).*
+![Wireshark Packet Analysis](03_Wireshark_Stealth_Scan_Analysis.png)
 
-Note: Active DNS resolution service detected.
+---
 
-Host 10.202.66.233 (Oppo Mobile Device)
+## 🧠 Security Analysis & Technical Validation
 
-Status: Up
+**Q1: What defines an "Open Port"?**
+> An open port indicates a network service is actively listening and accepting incoming TCP/UDP connections (e.g., Port 53 on `.212`).
 
-Filtered Port: 5060/tcp (Service: SIP)
+**Q2: Explain the mechanics of a TCP SYN Scan.**
+> Also known as a "Half-Open" scan. The scanner sends a `SYN` packet. If the target replies with `SYN/ACK`, the port is open. To remain stealthy, the scanner immediately sends a `RST` (Reset) packet to tear down the connection before it is logged by the target application.
 
-Note: Security filtering detected on VoIP-related services.
+**Q3: What are the security implications of an open DNS port (53)?**
+> If misconfigured, open DNS ports can be weaponized for DNS Cache Poisoning, Zone Transfers (information disclosure), or DNS Amplification (DDoS) attacks.
 
-Local Host 10.202.66.18 (Scanning Machine)
+**Q4: What does a "Filtered" state signify (e.g., Port 5060)?**
+> It means a network obstacle (like a firewall or IDS/IPS) is silently dropping the probes. Nmap cannot determine if the port is truly open or closed.
 
-Status: Up
+**Q5: Why did the local host (10.202.66.18) show all ports as filtered?**
+> The local operating system's firewall is active and configured to drop unauthorized incoming ICMP/TCP probes.
 
-Note: All 1000 ports appeared filtered/ignored due to local firewall settings.
+**Q6: What are the general risks of unnecessary open ports?**
+> They unnecessarily increase the "Attack Surface," providing threat actors with potential entry points for exploitation, brute-force attacks, or unauthorized access.
 
-📸 Visual Evidence (Proof of Work)
-1. Nmap Command Execution
-Initial deployment of the stealth scan on the subnet.
+**Q7: How can these ports be secured?**
+> 1. Apply the Principle of Least Privilege. 2. Implement strict firewall rules (e.g., iptables/UFW). 3. Disable unused services. 4. Ensure all active services are patched and hardened.
 
-2. Scan Results Summary
-Discovery of active hosts and identified open/filtered ports.
+**Q8: Why is Network Reconnaissance critical?**
+> Reconnaissance is the foundation of both offensive and defensive security. For defenders, identifying exposed services proactively is the first step in shrinking the attack surface before attackers can exploit vulnerabilities.
 
-3. Wireshark Packet Analysis
-Confirmation of the SYN ➔ SYN/ACK ➔ RST flow, validating the stealth scan.
-
-🧠 Security Analysis & Interview Questions
-1. What is an "Open Port"?
-An open port is a communication channel actively accepting incoming traffic. Port 53 was found open on .212, indicating an active service ready for connection.
-
-2. How does a TCP SYN Scan work?
-It is a "Half-Open" scan. Nmap sends a SYN packet; if a SYN/ACK is received, the port is open. Nmap then sends a RST packet instead of an ACK, closing the connection before it's fully established to remain stealthy.
-
-3. Risks of Open Port 53 (DNS)?
-Open DNS ports can be exploited for DNS Cache Poisoning, DNS Amplification DDoS attacks, or Zone Transfers to map internal networks.
-
-4. What does "Filtered" mean for Port 5060?
-It means a firewall or packet filter is preventing Nmap from determining if the port is open or closed by dropping the probes.
-
-5. Why are ports on the local host (10.202.66.18) filtered?
-This is due to the local OS firewall protecting the machine from unauthorized external probes.
-
-6. General risks of unnecessary open ports?
-They increase the "Attack Surface," allowing hackers to find entry points for exploitation, unauthorized access, or malware injection.
-
-7. How to secure these ports?
-Implement strict firewall rules, disable unused services, and ensure all active services are regularly patched and hardened.
-
-8. Importance of Network Reconnaissance?
-Reconnaissance is the first step of the Cyber Kill Chain. Identifying exposed services allows security professionals to proactively fix vulnerabilities before an attacker can exploit them.
-
-Internship: Elevate Labs.
-
-Intern: Ayush Kumar Patel
+---
+**Author:** Ayush Kumar Patel | **Role:** Cyber Security Intern @ Elevate Labs
