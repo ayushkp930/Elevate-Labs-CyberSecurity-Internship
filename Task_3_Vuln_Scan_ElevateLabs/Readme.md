@@ -8,13 +8,27 @@ This project involves performing an automated vulnerability assessment on a loca
 * **Scanner:** Nessus Essentials
 * **Target:** Local Machine ([REDACTED])
 
+---
+
 ## 📊 Key Findings & Mitigation Strategies
-During the scan, 65 vulnerabilities were identified. Fortunately, no "Critical" or "High" severity vulnerabilities were found. Below are the top "Medium" severity findings:
+
+**Nessus Scan Dashboard Summary:**
+![Scan Dashboard Summary](01-scan-dashboard-summary.png)
+
+During the scan, 65 vulnerabilities were identified. Fortunately, no "Critical" or "High" severity vulnerabilities were found. 
+
+**List of Detected Vulnerabilities:**
+![Vulnerabilities List](02-vulnerabilities-list.png)
+
+Below are the top "Medium" severity findings:
 
 ### 1. Ruby REXML 3.3.3 < 3.4.2 DoS Vulnerability
 * **Severity:** Medium
 * **Description:** The REXML gem is vulnerable to a Denial of Service (DoS) attack when parsing multiple XML declarations.
 * **Mitigation:** Upgrade the REXML version to 3.4.2 or higher.
+
+*Proof of Finding:*
+![Ruby REXML Vulnerability](03-finding-ruby-rexml.png)
 
 ### 2. ImageMagick Multiple Vulnerabilities
 * **Severity:** Medium
@@ -25,6 +39,9 @@ During the scan, 65 vulnerabilities were identified. Fortunately, no "Critical" 
 * **Severity:** Medium
 * **Description:** A heap-based buffer overflow exists in Vim, which could potentially lead to a crash or unintended behavior.
 * **Mitigation:** Update Vim to version 9.2.0077 or newer.
+
+*Proof of Findings (ImageMagick & Vim):*
+![ImageMagick and Vim Vulnerabilities](04-finding-imagemagick-vim.png)
 
 ---
 
