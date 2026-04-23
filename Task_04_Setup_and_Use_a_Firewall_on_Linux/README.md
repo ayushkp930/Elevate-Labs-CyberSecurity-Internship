@@ -17,19 +17,19 @@ To configure and test basic firewall rules using UFW (Uncomplicated Firewall) on
 
 #### 1. Initial Firewall Status
 I started by checking the current status of the firewall and ensuring it was active.
-![UFW Status](images/1_ufw_status.png)
+![UFW Status](1_ufw_status.png)
 
 #### 2. Blocking Insecure Ports (Port 23)
 Added a specific rule to deny all inbound traffic on Port 23 (Telnet) to secure the system from plain-text communication vulnerabilities.
-![Deny Port 23](images/2_deny_port_23.png)
+![Deny Port 23](2_deny_port_23.png)
 
 #### 3. Verification of Block Rule
 Tested the rule by attempting a Telnet connection. The firewall successfully refused the connection.
-![Telnet Test](images/3_telnet_test.png)
+![Telnet Test](3_telnet_test.png)
 
 #### 4. Allowing Essential Services (Port 22)
 Configured a rule to permit inbound traffic on Port 22 for secure SSH access.
-![Allow SSH](images/4_allow_port_22.png)
+![Allow SSH](4_allow_port_22.png)
 
 ---
 
@@ -54,7 +54,7 @@ Telnet is an unencrypted protocol that sends data (including credentials) in pla
 Failing to update rules regularly, leaving "Any-to-Any" allow rules, and not monitoring firewall logs for suspicious activity.
 
 **7. How does a firewall improve network security?**
-It acts as a barrier between a trusted internal network and untrusted external networks, preventing unauthorized access.
+By creating a barrier between trusted and untrusted networks, preventing unauthorized access.
 
 **8. What is NAT in firewalls?**
 Network Address Translation (NAT) allows a firewall to map multiple private IP addresses to a single public IP, hiding the internal network structure.
