@@ -24,15 +24,15 @@ During the session, I identified and analyzed the following protocols:
 ### 📸 Task Screenshots
 
 #### 1. Main Traffic Capture
-![Main Capture](screenshots/01_capture_main.png)
+![Main Capture](01_capture_main.png)
 *Description: Capturing live traffic on the wlan0 interface.*
 
 #### 2. Protocol Filtering (DNS/TCP)
-![DNS Filter](screenshots/02_dns_filter.jpg)
+![DNS Filter](02_dns_filter.png)
 *Description: Applying filters to isolate specific protocol packets.*
 
 #### 3. Detailed Packet Analysis
-![Analysis](screenshots/03_tcp_filter.jpg)
+![Analysis](03_tcp_analysis.png)
 *Description: Inspecting the 3-way handshake and packet headers.*
 
 ---
@@ -66,7 +66,7 @@ Yes, but only if you have the session keys or the private keys of the server (e.
 ---
 
 ### 📂 Files Included
-- **Capture File:** [network_traffic.pcapng](capture/network_traffic.pcapng)
+- **Capture File:** [network_traffic.pcapng](network_traffic.pcapng)
 - **Report:** This README serves as the summary report.
 
 **Submitted by:** Ayush Kumar Patel
