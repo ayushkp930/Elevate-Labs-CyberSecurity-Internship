@@ -24,15 +24,15 @@ During the session, I identified and analyzed the following protocols:
 ### 📸 Task Screenshots
 
 #### 1. Main Traffic Capture
-![Main Capture](screenshots/capture_main.png)
+![Main Capture](screenshots/01_capture_main.png)
 *Description: Capturing live traffic on the wlan0 interface.*
 
 #### 2. Protocol Filtering (DNS/TCP)
-![DNS Filter](screenshots/dns_filter.jpg)
+![DNS Filter](screenshots/02_dns_filter.jpg)
 *Description: Applying filters to isolate specific protocol packets.*
 
 #### 3. Detailed Packet Analysis
-![Analysis](screenshots/tcp_analysis.jpg)
+![Analysis](screenshots/03_tcp_filter.jpg)
 *Description: Inspecting the 3-way handshake and packet headers.*
 
 ---
