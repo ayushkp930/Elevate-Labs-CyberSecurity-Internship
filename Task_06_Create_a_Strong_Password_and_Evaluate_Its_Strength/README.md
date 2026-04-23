@@ -28,19 +28,19 @@ I analyzed four passwords with decreasing levels of complexity to observe the im
 ### 📸 Evaluation Screenshots
 
 #### 1. Very Strong Password
-![Very Strong](screenshots/01_very_strong_password.png)
+![Very Strong](01_very_strong_password.png)
 *Score: 100%. Maximum complexity achieved.*
 
 #### 2. Strong Password
-![Strong](screenshots/02_strong_password.png)
+![Strong](02_strong_password.png)
 *Score: High. Good mix of characters but shorter length.*
 
 #### 3. Medium Password
-![Medium](screenshots/03_medium_password.png)
+![Medium](03_medium_password.png)
 *Score: Average. Common patterns detected.*
 
 #### 4. Very Weak Password
-![Very Weak](screenshots/04_very_weak_password.png)
+![Very Weak](04_very_weak_password.png)
 *Score: 0%. Failed due to dictionary words and lack of variety.*
 
 ---
